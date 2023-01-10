@@ -1,5 +1,6 @@
 import Link from "next/link";
 import styles from "../styles/Navbar.module.css";
+import { FaFacebookF, FaTwitter , FaInstagram, FaSearch , FaDribbble} from "react-icons/fa";
 
 function Navbar() {
   return (
@@ -34,8 +35,12 @@ function Navbar() {
          after:duration-0 hover:after:duration-1000 hover:after:w-full "> CONTACT </h3>
       </div>
 
-      <div className="w-1/3 justify-center">
-        kala
+      <div className="w-1/3 inline-flex space-x-5">
+        <FaSearch className="mr-5" />
+        <FaFacebookF className="hover:text-[#1773ea]" />
+        <FaTwitter className="hover:text-[#1c96e8]"/>
+        <FaInstagram />
+        <FaDribbble />
       </div>
     </div>
   )
