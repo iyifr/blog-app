@@ -23,10 +23,10 @@ function Navbar() {
          after:duration-0 hover:after:duration-500 hover:after:w-full">HOME</h3>
 
         <h3 className="after:w-0 after:h-[2px] after:bg-orange-500 after:block cursor-pointer 
-         after:duration-0 hover:after:duration-500 hover:after:w-full ">BLOG</h3>
+         after:duration-0 hover:after:duration-500 hover:after:w-full ">TOPICS</h3>
 
         <h3 className="after:w-0 after:h-[2px] after:bg-orange-500 after:block cursor-pointer
-       after:duration-0 hover:after:duration-700 hover:after:w-full ">PAGES</h3>
+       after:duration-0 hover:after:duration-700 hover:after:w-full ">PATREON</h3>
         
         <h3 className="after:w-0 after:h-[2px] after:bg-orange-500 after:block cursor-pointer
         after:duration-0 hover:after:duration-700 hover:after:w-full"> ABOUT </h3>
@@ -36,11 +36,11 @@ function Navbar() {
       </div>
 
       <div className="w-1/3 inline-flex space-x-5">
-        <FaSearch className="mr-5" />
-        <FaFacebookF className="hover:text-[#1773ea]" />
-        <FaTwitter className="hover:text-[#1c96e8]"/>
-        <FaInstagram />
-        <FaDribbble />
+        <FaSearch className="mr-5 min-w-[10%]" />
+        <FaFacebookF className="hover:text-[#1773ea] min-w-[8.5%]" />
+        <FaTwitter className="hover:text-[#1c96e8] min-w-[8.5%]"/>
+        <FaInstagram className = "min-w-[8.5%]"/>
+        <FaDribbble className="min-w-[8.5%]"/>
       </div>
     </div>
   )
