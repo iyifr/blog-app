@@ -37,27 +37,34 @@ export default function Home({posts}) {
           
       </>
 
-      <>
+      <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-7 p-2 md:p-6 mt-8'>
         {
           posts.map(post => {
             return <Link key={post._id} href = {`/post/$(post.slug.current)`}>
-              <div>
+              <div className = "group cursor-pointer border rounded-lg overflow-hidden">
                <img src= {urlFor(post?.mainImage).url()}
                 alt = "main picture" 
-                className='w-56'/>
-              </div>
+                className='w-full h-60 object-cover rounded-lg group-hover:scale-105 transition-transform duration-200 ease-in-out'/>
+                <div className='flex space-y-2 justify-between p-5 bg-white'>
 
-              <div>
-                  <h1 className='text-slate-900 text-3xl'>{post.title}</h1>
-                  <p>{post.description} by {post.author.name}</p>
+                <div>
+                  <h1 className='text-slate-800 text-3xl font-bold mb-3'>{post.title}</h1>
+                  <p className='text-xs'>{post.description} by {post.author.name}</p>
+                </div>
+                  
                   <img src= {urlFor(post.author.image).url()} 
                   alt = "author image "
-                  className = "w-12 h-12 object-contain rounded-full" />
+                  className = "w-12 h-12 rounded-full" />
+
               </div>
+
+              </div>
+
+              
               </Link>
             })
         }
-      </>
+      </div>
     </div>
   )
 
