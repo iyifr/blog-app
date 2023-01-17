@@ -1,9 +1,7 @@
 import Head from 'next/head'
 import { client , urlFor} from '../lib/sanity';
-import styles from '../styles/Home.module.css'
 import Navbar from "../components/Navbar";
 import Link from 'next/link';
-import Image from 'next/image';
 
 
 
@@ -22,8 +20,8 @@ export default function Home({posts}) {
 
       <>
         <Navbar />
-        <div className='bg-gradient-to-r from-emerald-400 to-blue-400 p-4 flex justify-around 
-          md:text-7xl text-4xl lg:text-7xl sm:text-4xl space-x-3 -mt-6 z-auto'>
+        <div className='bg-gradient-to-r from-green-400 to-blue-500 p-4 flex justify-around 
+          md:text-7xl text-4xl lg:text-7xl sm:text-4xl space-x-3 -mt-6'>
           <div className=''>
            <h1 className=' mt-5 mb-5 text-slate-900'> Heard.</h1> 
             <h1 className=' mt-5 mb-5 ml-5 text-slate-900'>  Empowered. </h1> 
@@ -40,7 +38,7 @@ export default function Home({posts}) {
       <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-7 p-2 md:p-6 mt-8'>
         {
           posts.map(post => {
-            return <Link key={post._id} href = {`/post/$(post.slug.current)`}>
+            return <Link key={post._id} href = {`/posts/${post.slug.current}`}>
               <div className = "group cursor-pointer border rounded-lg overflow-hidden">
                <img src= {urlFor(post?.mainImage).url()}
                 alt = "main picture" 
@@ -88,6 +86,7 @@ export default function Home({posts}) {
       return {
         props : {
            posts 
-        }
+        },
+
       }
   }

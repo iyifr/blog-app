@@ -20,7 +20,7 @@ function Navbar() {
         </Link>
       </div>
 
-      <div className="w-2/3 hidden md:inline-flex justify-start space-x-8 text-lg sm:xl text-slate-700">
+      <div className="w-2/3 hidden md:inline-flex justify-start space-x-8 text-md lg:text-lg sm:xl text-slate-700">
         <h3 className="after:w-0 after:h-[2px] after:bg-lime-600 after:block cursor-pointer
          after:duration-0 hover:after:duration-500 hover:after:w-full">HOME</h3>
 
