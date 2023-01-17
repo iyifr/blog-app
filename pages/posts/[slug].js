@@ -41,8 +41,32 @@ function Post({post}) {
                 </div>
             </article>    
             
-            <hr className='max-w-2xl mx-auto border border-orange-500 mb-5 mt-5'></hr>
+            <hr className='max-w-2xl mx-auto border border-orange-500 mb-3 mt-5'></hr>
+            <form className='flex flex-col p-5 mt-5 mb-5 max-w-2xl mx-auto'>
+                <h3 className='text-sm text-orange-500'>What are your thoughts?</h3>
+                <h4 className='text-xl text-slate-500 font-bold animate-bounce mt-3'>Leave a comment below!</h4>
+                <hr className='py-3 mt-2 border-slate-300'></hr>
+                <label className='block mb-5 mt-3' >
+                    <span className='text-gray-700'>Name</span>
+                    <input className='shadow border rounded p-3 mx-3 form-input mt-2 block w-full 
+                    focus:outline-none  focus:ring-2 focus:ring-opacity-50 focus:ring-orange-400' placeholder='John Appleseed' type = "text"></input>
+                </label>
+
+                 <label className='block mb-5 mt-3'>
+                    <span className='text-gray-700'>Email</span>
+                    <input className='shadow border rounded p-3 mx-3 form-input mt-2 block w-full 
+                    focus:outline-none focus:ring-2 focus:ring-opacity-50 focus:ring-orange-400' placeholder='JohnAppleseed304@gmail.com' type = "text"></input>
+                </label>
+
+                 <label className='block mb-5 mt-3'>
+                    <span className='text-gray-700'>Comment</span>
+                    <textarea className='shadow border rounded py-2 px-3 form-textarea mt-2 block w-full 
+                    focus:ring-2 focus:ring-opacity-50 focus:ring-orange-400 focus:outline-none' type = "text"  rows= {8}/>
+                </label>
+
             
+
+            </form>
         </div>
 
        
