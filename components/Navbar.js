@@ -20,7 +20,7 @@ function Navbar() {
         </Link>
       </div>
 
-      <div className="w-2/3 hidden md:inline-flex justify-start space-x-8 text-md lg:text-lg sm:xl text-slate-700">
+      <div className="w-2/3 hidden md:inline-flex justify-start space-x-8 text-md text-slate-700">
         <h3 className="after:w-0 after:h-[2px] after:bg-lime-600 after:block cursor-pointer
          after:duration-0 hover:after:duration-500 hover:after:w-full">HOME</h3>
 
@@ -37,10 +37,10 @@ function Navbar() {
 
       <div className="w-1/3 inline-flex space-x-5">
         <FaSearch className="mr-5 min-w-[10%]" />
-        <FaFacebookF className="hover:text-[#1773ea] min-w-[8.5%]" />
-        <FaTwitter className="hover:text-[#1c96e8] min-w-[8.5%]"/>
-        <FaInstagram className = "min-w-[8.5%]"/>
-        <FaDribbble className="min-w-[8.5%]"/>
+        <FaFacebookF className="hover:text-[#1773ea] min-w-[8.5%] cursor-pointer " />
+        <FaTwitter className="hover:text-[#1c96e8] min-w-[8.5%] cursor-pointer"/>
+        <FaInstagram className = "hover:text-red-500 min-w-[8.5%] cursor-pointer"/>
+        <FaDribbble className="hover:text-orange-400 min-w-[8.5%] cursor-pointer"/>
       </div>
     </div>
   )

@@ -20,15 +20,15 @@ export default function Home({posts}) {
 
       <>
         <Navbar />
-        <div className='bg-gradient-to-r from-green-400 to-blue-500 p-4 flex justify-around 
-          md:text-7xl text-4xl lg:text-7xl sm:text-4xl space-x-3 -mt-6'>
+        <div className='bg-gradient-to-r from-emerald-400 via-blue-500 to-teal-400 p-4 flex justify-around 
+          md:text-7xl lg:min-h-5xl text-4xl lg:text-7xl sm:text-4xl space-x-3 -mt-6'>
           <div className=''>
            <h1 className=' mt-5 mb-5 text-slate-900'> Heard.</h1> 
             <h1 className=' mt-5 mb-5 ml-5 text-slate-900'>  Empowered. </h1> 
              <h1 className=' mt-5 mb-5 ml-11 text-slate-900'>  Invigorated.</h1> 
             </div>
 
-          <div className=' inline-flex hover:animate-bounce cursor-pointer' > 
+          <div className=' inline-flex cursor-pointer' > 
             <img src='https://media0.giphy.com/media/9JyVS1drH2NoHu0qVo/giphy.gif' alt='yinyang' className='object-contain w-36  lg:w-48'/>
           </div>
         </div>
@@ -46,13 +46,13 @@ export default function Home({posts}) {
                 <div className='flex space-y-2 justify-between p-5 bg-white'>
 
                 <div>
-                  <h1 className='text-slate-800 text-3xl font-bold mb-3'>{post.title}</h1>
-                  <p className='text-xs'>{post.description} by {post.author.name}</p>
+                  <h1 className='text-slate-800 text-xl font-bold mb-3'>{post.title}</h1>
+                  <p className='text-xs text-gray-500'>{post.description} by <span className='text-green-500'>{post.author.name}</span></p>
                 </div>
                   
                   <img src= {urlFor(post.author.image).url()} 
                   alt = "author image "
-                  className = "w-12 h-12 rounded-full" />
+                  className = "w-8 h-8 rounded-full" />
 
               </div>
 
