@@ -10,18 +10,17 @@
   },
   "dependencies": {
     "@fontsource/poppins": "^4.5.10",
-    "@next/font": "13.1.1",
     "@portabletext/react": "^2.0.0",
     "eslint": "8.31.0",
     "eslint-config-next": "13.1.1",
     "next": "13.1.1",
     "next-sanity": "^4.1.0",
     "next-sanity-image": "^5.0.0",
+    "nextjs-progressbar": "^0.0.16",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-hook-form": "^7.42.1",
-    "react-icons": "^4.7.1",
-    "react-portable-text": "^0.5.1"
+    "react-icons": "^4.7.1"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.13",

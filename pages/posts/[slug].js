@@ -3,8 +3,14 @@ import Navbar from '../../components/Navbar' ;
 import Head from "next/head";
 import {useForm , SubmitHandler} from "react-hook-form" ; 
 import { useState } from 'react';
+import {BsHandThumbsDown} from "react-icons/bs";
+import {BsHandThumbsUp} from "react-icons/bs"
+
+
 
 function Post({post}) {
+
+    console.log(post);
  const [submitted , setSubmitted] = useState(false)
     const {
         register , handleSubmit ,  formState: { errors},
@@ -18,8 +24,8 @@ function Post({post}) {
 
  return <>
  <Head >
-    <title>Yabx || Post</title>
-    <meta name="description" content= {post.description} />
+    <title>Yabx  ||  Post</title>
+    <meta name="description" content= "individual blog page" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
  </Head>
@@ -55,8 +61,11 @@ function Post({post}) {
             
             <hr className='max-w-2xl mx-auto border border-orange-500 mb-3 mt-5'></hr>
                         {
-                submitted ? <p className='text-green-500 font-bold text-xl'>Thanks! , your comment has been submitted </p>
-       :  <form onSubmit= {handleSubmit(onSubmit)} className='flex flex-col p-5 mt-5 mb-5 max-w-2xl mx-auto'>
+                submitted ? <div className='flex flex-col p-10 my-10 bg-orange-400 max-w-2xl text-white mx-auto'>
+                    <h1 className='font-bold text-2xl'>Thank you for submitting your comment!</h1>
+                    <p className=''>Your comment will be shown when it is approved by the moderator</p>
+
+                </div>       :  <form onSubmit= {handleSubmit(onSubmit)} className='flex flex-col p-5 mt-5 mb-5 max-w-2xl mx-auto'>
                 <h3 className='text-sm text-orange-500'>What are your thoughts?</h3>
                 <h4 className='text-xl text-slate-500 font-bold animate-bounce mt-3'>Leave a comment below!</h4>
                 <hr className='py-3 mt-2 border-slate-300'></hr>
@@ -78,7 +87,7 @@ function Post({post}) {
                  <label className='block mb-5 mt-3'>
                     <span className='text-gray-600'>Email</span>
                     <input {...register("email", {required: true})} className='shadow border rounded p-3 lg:mx-3 form-input mt-2 block w-full 
-                    focus:outline-none focus:ring-2 focus:ring-opacity-50 focus:ring-orange-400' placeholder='JohnAppleseed304@gmail.com' type = "email"></input>
+                    focus:outline-none focus:ring-2 focus:ring-opacity-50 focus:ring-orange-400' placeholder='kaytranada304@gmail.com' type = "email"></input>
                     
                 {
                     errors.email && (<span className='text-red-500 text-sm mx-3'> Your email is required*</span>)
@@ -96,13 +105,42 @@ function Post({post}) {
 
                 <input type = "submit" className='shadow cursor-pointer hover:bg-teal-500 duration hover:duration-500 block w-full mt-3 p-2 rounded-lg bg-orange-500 text-slate-100' />
 
-            </form>     }     
+            </form>     }  
+
+             
+            <h1 className='font-bold text-2xl  max-w-2xl mx-auto opacity-50 text-center'>COMMENTS</h1>
+            
+               <div className='flex flex-col mt-5 max-w-2xl lg:max-w-5xl mx-auto'>
+               
+                { post[0].comments.map(comment => {
+                    return <div key={comment.post._id} className= "flex flex-col mx-12">
+                    {comment? 
+                    <div className='border-b-2 first:mt-4 shadow-orange-200 shadow-lg mb-4 p-5 cursor hover:animate-pulse'>
+                    
+                    <h4 className='text-lg uppercase font-bold tracking-wide text-slate-600'>{comment.name}</h4> 
+                    <p>{comment.comment}</p>
+                    <p className='text-sm text-gray-300 mt-2'>{new Date(comment._createdAt).toLocaleString("En-us")}</p>
+                    <div className='flex flex-row space-x-4 mt-3 '>
+                         <BsHandThumbsUp className='text-green-500 active:fill-green-200 active:animate-bounce cursor-pointer' role="button"/>
+                        <BsHandThumbsDown className='text-red-500 focus:bg-red-500 active:animate-bounce cursor-pointer' />
+                       
+                    </div>
+                    </div>
+                
+
+                    
+                    : "No comments yet"}
+                    </div>
+                })}
+               </div>
+            
     </main>
  </>
 }
 
 export async function getStaticProps({params}) {
     const query =  `*[_type == "post" && slug.current == $slug] {
+  
   _id ,
     _createdAt,
     title , 
@@ -110,6 +148,11 @@ export async function getStaticProps({params}) {
       name , 
       image
     },
+     "comments" : *[
+        _type == "comment" && 
+        post._ref == ^._id && 
+        approved==true
+     ],
     description ,
     mainImage,
     slug,
@@ -127,7 +170,7 @@ export async function getStaticProps({params}) {
         props: {
             post,
         },
-        revalidate: 120 , //updates the page every 2 minutes a user spends on the site
+       // revalidate: 60 , //updates the page every 2 minutes a user spends on the site
     }
 }
 
@@ -145,7 +188,7 @@ export async function getStaticPaths() {
                 slug: page.slug.current
             },
         })) || [] , 
-        fallback: true,  
+        fallback: "blocking",  
      };
 }
 
