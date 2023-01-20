@@ -29,7 +29,7 @@ function Post({post}) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="https://images-platform.99static.com//TNbMwuUlICajzNyWw9Prp2nuNvc=/204x202:755x753/fit-in/500x500/99designs-contests-attachments/96/96205/attachment_96205491" />
         <meta name = "og:title" content = {post ? post[0].title : "Blog post"}/>
-        <meta name='og:image' content= {urlFor(post[0]?.mainImage).url()}/>
+        <meta name='og:image' content= "https://images-platform.99static.com//TNbMwuUlICajzNyWw9Prp2nuNvc=/204x202:755x753/fit-in/500x500/99designs-contests-attachments/96/96205/attachment_96205491"/>
  </Head>
 
     <main>
