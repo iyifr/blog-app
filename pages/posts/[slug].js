@@ -10,7 +10,7 @@ import {BsHandThumbsDown , BsHandThumbsUp} from "react-icons/bs";
 
 function Post({post}) {
 
-    console.log(post);
+ 
  const [submitted , setSubmitted] = useState(false)
     const {
         register , handleSubmit ,  formState: { errors},
@@ -24,10 +24,12 @@ function Post({post}) {
 
  return <>
  <Head >
-    <title>Yabx  ||  Post</title>
-    <meta name="description" content= "individual blog page" />
+    <title>Yabx  || {post? post[0].title : "Post"}</title>
+    <meta name="description" content= {post[0].description} />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="https://images-platform.99static.com//TNbMwuUlICajzNyWw9Prp2nuNvc=/204x202:755x753/fit-in/500x500/99designs-contests-attachments/96/96205/attachment_96205491" />
+        <meta name = "og:title" content = {post ? post[0].title : "Blog post"}/>
+        <meta name='og:image' content= {urlFor(post[0]?.mainImage).url()}/>
  </Head>
 
     <main>
@@ -115,7 +117,7 @@ function Post({post}) {
                 { post[0].comments.map(comment => {
                     return <div key={comment.post._id} className= "flex flex-col mx-12">
                     {comment? 
-                    <div className='border-b-2 first:mt-4 shadow-orange-200 shadow-lg mb-4 p-5 cursor hover:animate-pulse'>
+                    <div className='border-b-2 first:mt-4 rounded shadow-orange-200 shadow-lg mb-4 p-5 cursor hover:animate-pulse'>
                     
                     <h4 className='text-lg uppercase font-bold tracking-wide text-slate-600'>{comment.name}</h4> 
                     <p>{comment.comment}</p>

@@ -12,9 +12,9 @@ export default function Home({posts}) {
     <div className='max-w-8xl mx-auto'>
       <Head>
         <title>Yabx</title>
-        <meta name="description" content="A blog for weird people to feel less.. weird" />
+        <meta name="description" content="A blog for everyone's reading pleasure" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="https://images-platform.99static.com//TNbMwuUlICajzNyWw9Prp2nuNvc=/204x202:755x753/fit-in/500x500/99designs-contests-attachments/96/96205/attachment_96205491" />
 
       </Head>
 
@@ -29,7 +29,7 @@ export default function Home({posts}) {
             </div>
 
           <div className=' inline-flex cursor-pointer' > 
-            <img src='https://media0.giphy.com/media/9JyVS1drH2NoHu0qVo/giphy.gif' alt='yinyang' className='object-contain w-36  lg:w-48'/>
+            <img src='https://media0.giphy.com/media/9JyVS1drH2NoHu0qVo/giphy.gif' alt='yinyang gif spinning' className='object-contain w-36  lg:w-48'/>
           </div>
         </div>
           
@@ -41,7 +41,7 @@ export default function Home({posts}) {
             return <Link key={post._id} href = {`/posts/${post.slug.current}`}>
               <div className = "group cursor-pointer border rounded-lg overflow-hidden">
                <img src= {urlFor(post?.mainImage).url()}
-                alt = "main picture" 
+                alt = "article main image" 
                 className='w-full h-60 object-cover rounded-lg group-hover:scale-105 transition-transform duration-200 ease-in-out'
                 loading='lazy'/>
                 <div className='flex space-y-2 justify-between p-5 bg-white'>
@@ -52,7 +52,7 @@ export default function Home({posts}) {
                 </div>
                   
                   <img src= {urlFor(post.author.image).url()} 
-                  alt = "author image "
+                  alt = "author's picture "
                   className = "w-8 h-8 rounded-full" />
 
               </div>
