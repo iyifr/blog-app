@@ -42,7 +42,8 @@ export default function Home({posts}) {
               <div className = "group cursor-pointer border rounded-lg overflow-hidden">
                <img src= {urlFor(post?.mainImage).url()}
                 alt = "main picture" 
-                className='w-full h-60 object-cover rounded-lg group-hover:scale-105 transition-transform duration-200 ease-in-out'/>
+                className='w-full h-60 object-cover rounded-lg group-hover:scale-105 transition-transform duration-200 ease-in-out'
+                loading='lazy'/>
                 <div className='flex space-y-2 justify-between p-5 bg-white'>
 
                 <div>

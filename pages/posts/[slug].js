@@ -1,10 +1,10 @@
 import { client , urlFor , PortableText} from '../../lib/sanity' ;
 import Navbar from '../../components/Navbar' ; 
 import Head from "next/head";
-import {useForm , SubmitHandler} from "react-hook-form" ; 
+import {useForm} from "react-hook-form" ; 
 import { useState } from 'react';
-import {BsHandThumbsDown} from "react-icons/bs";
-import {BsHandThumbsUp} from "react-icons/bs"
+import {BsHandThumbsDown , BsHandThumbsUp} from "react-icons/bs";
+
 
 
 
@@ -36,7 +36,7 @@ function Post({post}) {
              <div className = "mx-auto" >
             { post[0]?.mainImage && (<img src= {urlFor(post[0]?.mainImage).url()}
                 alt = "main picture" 
-                className=' md:max-w-[90%]  lg:hidden mx-auto object-cover'/>
+                className=' md:max-w-[90%] sm:h-[45rem] lg:hidden mx-auto object-cover'/>
                 )}
              </div>
 
@@ -128,8 +128,7 @@ function Post({post}) {
                     </div>
                 
 
-                    
-                    : "No comments yet"}
+                : "No comments yet"}
                     </div>
                 })}
                </div>
@@ -170,7 +169,7 @@ export async function getStaticProps({params}) {
         props: {
             post,
         },
-       // revalidate: 60 , //updates the page every 2 minutes a user spends on the site
+        revalidate: 120 , //updates the page every 2 minutes a user spends on the site
     }
 }
 
