@@ -108,7 +108,7 @@ function Post({post}) {
                 }
                 </label>
 
-                <input type = "submit" className='shadow cursor-pointer hover:bg-teal-500 dark:bg-green-500 dark:shadow-sm duration hover:duration-500 block w-full mt-3 p-2 rounded-lg bg-orange-500 text-slate-100' />
+                <input type = "submit" className='shadow cursor-pointer hover:bg-teal-500  duration hover:duration-500 block w-full mt-3 p-2 rounded-lg bg-orange-500 text-slate-100' />
 
             </form>     }  
 
@@ -120,7 +120,7 @@ function Post({post}) {
                 { post[0].comments.map(comment => {
                     return <div key={comment.post._id} className= "flex flex-col mx-12">
                     {comment? 
-                    <div className='border-b-2 first:mt-4 rounded dark:bg-slate-300 dark:rounded-lg dark:shadow-green-300 dark:shadow-lg
+                    <div className='border-b-2 first:mt-4 rounded 
                      shadow-orange-200 shadow-lg mb-4 p-5 cursor hover:animate-pulse'>
                     
                     <h4 className='text-lg uppercase font-bold tracking-wide text-slate-600'>{comment.name}</h4> 
