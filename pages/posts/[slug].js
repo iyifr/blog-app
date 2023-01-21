@@ -22,14 +22,17 @@ function Post({post}) {
     body: JSON.stringify(data)}).then(() => setSubmitted(true)).catch((error) => console.log(error) , setSubmitted(false))
     };
 
+    const title = post[0].title;
+    const imageUrl = urlFor(post[0]?.mainImage).url()
+
  return <>
  <Head >
-    <title>Yabx  || {post? post[0].title : "Post"}</title>
+    <title>Yabx || {title}</title>
     <meta name="description" content= {post[0].description} />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="https://images-platform.99static.com//TNbMwuUlICajzNyWw9Prp2nuNvc=/204x202:755x753/fit-in/500x500/99designs-contests-attachments/96/96205/attachment_96205491" />
-        <meta name = "og:title" content = {post ? post[0].title : "Blog post"}/>
-        <meta name='og:image' content= "https://images-platform.99static.com//TNbMwuUlICajzNyWw9Prp2nuNvc=/204x202:755x753/fit-in/500x500/99designs-contests-attachments/96/96205/attachment_96205491"/>
+        <meta name = "og:title" content = {post ? title : "Blog post on Yabx blog"}/>
+        <meta name='og:image' content= {imageUrl}/>
  </Head>
 
     <main>
@@ -38,12 +41,12 @@ function Post({post}) {
              <div className = "mx-auto" >
             { post[0]?.mainImage && (<img src= {urlFor(post[0]?.mainImage).url()}
                 alt = "main picture" 
-                className=' md:max-w-[90%] sm:h-[45rem] lg:hidden mx-auto object-cover'/>
+                className=' md:max-w-[90%] sm:h-[45rem] mx-auto object-cover'/>
                 )}
              </div>
 
             <article className = "lg:max-w-5xl mx-auto px-10 lg:px-5 md:px-20">
-                <h1 className = "lg:text-5xl md:text-4xl md:mb-4 lg:mb-6 text-3xl text-bold mt-10 mb-3">{post[0].title}</h1>
+                <h1 className = "lg:text-5xl md:text-4xl md:mb-4 lg:mb-6 text-3xl text-bold mt-10 mb-3">{title}</h1>
                 <h2 className='text-xl font-light text-gray-500 mb-2'>{post[0].description}</h2>
                 
                 <div className='space-y-3 flex items-center space-x-2'>
@@ -99,25 +102,26 @@ function Post({post}) {
                  <label className='block mb-5 mt-3'>
                     <span className='text-gray-600'>Comment</span>
                     <textarea {...register("comment", {required: true})} className='shadow border rounded py-2 px-3 form-textarea mt-2 block w-full 
-                    focus:ring-2 mx-3 focus:ring-opacity-50 focus:ring-orange-400 focus:outline-none' type = "text"  rows= {8}/>
+                    focus:ring-2 mx-1 focus:ring-opacity-50 focus:ring-orange-400 focus:outline-none' type = "text"  rows= {8}/>
                     {
-                    errors.comment && (<span className='text-red-500 text-sm'>Comment is required sha*</span>)
+                    errors.comment && (<span className='text-red-500 text-sm'>Leave a comment*</span>)
                 }
                 </label>
 
-                <input type = "submit" className='shadow cursor-pointer hover:bg-teal-500 duration hover:duration-500 block w-full mt-3 p-2 rounded-lg bg-orange-500 text-slate-100' />
+                <input type = "submit" className='shadow cursor-pointer hover:bg-teal-500 dark:bg-green-500 dark:shadow-sm duration hover:duration-500 block w-full mt-3 p-2 rounded-lg bg-orange-500 text-slate-100' />
 
             </form>     }  
 
              
-            <h1 className='font-bold text-2xl  max-w-2xl mx-auto opacity-50 text-center'>COMMENTS</h1>
+            <h1 className='font-bold text-2xl dark:text-slate-200 max-w-2xl mx-auto opacity-50 text-center'>COMMENTS</h1>
             
                <div className='flex flex-col mt-5 max-w-2xl lg:max-w-5xl mx-auto'>
                
                 { post[0].comments.map(comment => {
                     return <div key={comment.post._id} className= "flex flex-col mx-12">
                     {comment? 
-                    <div className='border-b-2 first:mt-4 rounded shadow-orange-200 shadow-lg mb-4 p-5 cursor hover:animate-pulse'>
+                    <div className='border-b-2 first:mt-4 rounded dark:bg-slate-300 dark:rounded-lg dark:shadow-green-300 dark:shadow-lg
+                     shadow-orange-200 shadow-lg mb-4 p-5 cursor hover:animate-pulse'>
                     
                     <h4 className='text-lg uppercase font-bold tracking-wide text-slate-600'>{comment.name}</h4> 
                     <p>{comment.comment}</p>
