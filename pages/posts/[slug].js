@@ -1,15 +1,18 @@
-import { client , urlFor , PortableText} from '../../lib/sanity' ;
+import { client , urlFor} from '../../lib/sanity' ;
 import Navbar from '../../components/Navbar' ; 
 import Head from "next/head";
 import {useForm} from "react-hook-form" ; 
 import { useState } from 'react';
 import {BsHandThumbsDown , BsHandThumbsUp} from "react-icons/bs";
-
+import PortableText from 'react-portable-text';
+import getYoutubeId from 'get-youtube-id'
+import LiteYouTubeEmbed from 'react-lite-youtube-embed'
+import 'react-lite-youtube-embed/dist/LiteYouTubeEmbed.css'
 
 
 
 function Post({post}) {
-
+ 
  
  const [submitted , setSubmitted] = useState(false)
     const {
@@ -60,14 +63,38 @@ function Post({post}) {
                 </div>
 
                 <div className= "mt-10">
-                    {post[0].body && <PortableText value={post[0].body} />}
+                    {post[0].body && <PortableText
+                    dataset={process.env.NEXT_PUBLIC_SANITY_DATASET}
+                    projectId = {process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}
+                    content={post[0].body} 
+                    serializers= {{
+                        h1: ({children}) => <h1 className = "text-4xl font-bold my-9">{children}</h1>,
+                        h2: ({children}) => <h2 className = "text-3xl text-zinc-900 font-bold mb-5 mt-5">{children}</h2>,
+                        h3: ({children}) => <h2 className = "text-2xl text-zinc-900 font-bold mb-5 mt-5">{children}</h2>,
+                        li: ({children}) => <li className = "ml-4 list-disc">{children}</li>,
+                        link: ({href , children}) => {
+                            <a href= {href} className = "text-blue-500 hover:underline" >{children}</a>
+                        } ,
+                            em: ({children}) => <em className = "tracking-wide text-xl font-bold italic" 
+                            style = {{color: "#ADE628"}}>{children}</em> ,
+                            youtube: (props) => {
+                                const { url } = {...props}
+                                const id = getYoutubeId(url) 
+                                return (<div className = "p-5 mx-auto max-w-3xl mt-4 mb-4">
+                                    <hr className = 'max-w-3xl mx-auto border border-pink-500 mb-3 mt-3' ></hr>
+                                    <LiteYouTubeEmbed id = {id} className = 'mx-auto max-w-2xl'/>
+                                    <hr className = 'max-w-3xl mx-auto border border-pink-500 mb-3 mt-3' ></hr>
+                                    </div>)
+                            }
+                     
+                    }}/>}
                 </div>
             </article>    
             
             <hr className='max-w-2xl mx-auto border border-orange-500 mb-3 mt-5'></hr>
                         {
                 submitted ? <div className='flex flex-col p-10 my-10 bg-orange-400 max-w-2xl text-white mx-auto'>
-                    <h1 className='font-bold text-2xl'>Thank you for submitting your comment!</h1>
+                    <h1 className='font-bold text-2xl'>Thank you for commenting!</h1>
                     <p className=''>Your comment will be shown when it is approved by the moderator</p>
 
                 </div>       :  <form onSubmit= {handleSubmit(onSubmit)} className='flex flex-col p-5 mt-5 mb-5 max-w-2xl mx-auto'>
@@ -198,3 +225,5 @@ export async function getStaticPaths() {
 }
 
 export default Post
+
+  
