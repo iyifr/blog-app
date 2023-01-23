@@ -48,7 +48,7 @@ function Post({post}) {
                 )}
              </div>
 
-            <article className = "lg:max-w-5xl mx-auto px-10 lg:px-5 md:px-20">
+            <article className = "lg:max-w-5xl max-w-3xl mx-auto px-8 lg:px-5 md:px-20">
                 <h1 className = "lg:text-5xl md:text-4xl md:mb-4 lg:mb-6 text-3xl text-bold mt-10 mb-3">{title}</h1>
                 <h2 className='text-xl font-light text-gray-500 mb-2'>{post[0].description}</h2>
                 
@@ -68,8 +68,8 @@ function Post({post}) {
                     projectId = {process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}
                     content={post[0].body} 
                     serializers= {{
-                        h1: ({children}) => <h1 className = "text-4xl font-bold my-9">{children}</h1>,
-                        h2: ({children}) => <h2 className = "text-3xl text-zinc-900 font-bold mb-5 mt-5">{children}</h2>,
+                        h1: ({children}) => <h1 className = "text-3xl lg:text-4xl text-zinc-900 font-bold mt-7 mb-3">{children}</h1>,
+                        h2: ({children}) => <h2 className = "text-2xl lg:text-3xl text-zinc-900 font-bold mb-5 mt-5">{children}</h2>,
                         h3: ({children}) => <h2 className = "text-2xl text-zinc-900 font-bold mb-5 mt-5">{children}</h2>,
                         li: ({children}) => <li className = "ml-4 list-disc">{children}</li>,
                         link: ({href , children}) => {
@@ -81,9 +81,9 @@ function Post({post}) {
                                 const { url } = {...props}
                                 const id = getYoutubeId(url) 
                                 return (<div className = "p-5 mx-auto max-w-3xl mt-4 mb-4">
-                                    <hr className = 'max-w-3xl mx-auto border border-pink-500 mb-3 mt-3' ></hr>
+                                    <hr className = 'max-w-3xl mx-auto border border-blue-300 mb-3 mt-3' ></hr>
                                     <LiteYouTubeEmbed id = {id} className = 'mx-auto max-w-2xl'/>
-                                    <hr className = 'max-w-3xl mx-auto border border-pink-500 mb-3 mt-3' ></hr>
+                                    <hr className = 'max-w-3xl mx-auto border border-blue-300 mb-3 mt-3' ></hr>
                                     </div>)
                             }
                      
