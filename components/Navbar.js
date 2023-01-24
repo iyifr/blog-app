@@ -10,11 +10,11 @@ function Navbar() {
   
 
   const ToggleSideBar = () => {
-    aside === 'hidden' ? setAside('w-[45vw]') : setAside('hidden')
+    aside === 'hidden' ? setAside('w-[70vw]') : setAside('hidden')
   }
 
   const CloseSideBar = ()=> {
-    if(aside === 'w-[45vw]') {
+    if(aside === 'w-[70vw]') {
       setAside('hidden')
     }
   }
@@ -57,7 +57,7 @@ function Navbar() {
         <FaBars className="min-w-[12%] h-[0.96rem] text-orange-400 hover:text-green-200 duration-150 md:hidden"  style={{marginLeft: "55%"}} role= "button" onClick= {ToggleSideBar} />
       </div>
        
-        <div className= {`${aside} shadow shadow-lg shadow-orange-200 duration:300  h-screen bg-green-100 top-0 left-0 fixed z-10 p-12`} style= {{margin: "0.3rem 0 0 0"}}>
+        <div className= {`${aside} shadow shadow-lg shadow-orange-200 duration:300  h-screen bg-green-200 top-0 left-0 fixed z-10 p-12`} style= {{margin: "0 0 0 0"}}>
           <div className="">
         <IoCloseSharp className= 'text-zinc-900 min-w-[15%] h-[2rem] active:text-purple-400 mt-4 absolute top-0 right-[25px] text-xl' role = "button" onClick = {CloseSideBar}/>
           <div className="flex flex-col items-center  font-extrabold text-lg list-none space-y-10 mt-24">

@@ -7,8 +7,9 @@ import {BsHandThumbsDown , BsHandThumbsUp} from "react-icons/bs";
 import PortableText from 'react-portable-text';
 import getYoutubeId from 'get-youtube-id'
 import LiteYouTubeEmbed from 'react-lite-youtube-embed'
-import 'react-lite-youtube-embed/dist/LiteYouTubeEmbed.css'
-
+import 'react-lite-youtube-embed/dist/LiteYouTubeEmbed.css' ; 
+import Image from "next/image"
+import GetImage from "../../utils/getImage"
 
 
 function Post({post}) {
@@ -27,6 +28,15 @@ function Post({post}) {
 
     const title = post[0].title;
     const imageUrl = urlFor(post[0]?.mainImage).url()
+
+    const ImageComponent = (props) => {
+        return <Image 
+        {...GetImage({...props})} 
+        style = {{marginBottom: '1.9rem'}} 
+        className = ' md:max-w-[60%] sm:h-[45rem] md:h-auto mt-8 mx-auto object-cover'
+        loading='lazy'
+        alt = {"article image"}/>
+    }
 
  return <>
  <Head >
@@ -48,7 +58,7 @@ function Post({post}) {
                 )}
              </div>
 
-            <article className = "lg:max-w-5xl max-w-3xl mx-auto px-8 lg:px-5 md:px-20">
+            <article className = "lg:max-w-5xl md:max-w-4xl mx-auto px-8 lg:px-8 md:px-20">
                 <h1 className = "lg:text-5xl md:text-4xl md:mb-4 lg:mb-6 text-3xl text-bold mt-10 mb-3">{title}</h1>
                 <h2 className='text-xl font-light text-gray-500 mb-2'>{post[0].description}</h2>
                 
@@ -68,25 +78,30 @@ function Post({post}) {
                     projectId = {process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}
                     content={post[0].body} 
                     serializers= {{
-                        h1: ({children}) => <h1 className = "text-3xl lg:text-4xl text-zinc-900 font-bold mt-7 mb-3">{children}</h1>,
-                        h2: ({children}) => <h2 className = "text-2xl lg:text-3xl text-zinc-900 font-bold mb-5 mt-5">{children}</h2>,
-                        h3: ({children}) => <h2 className = "text-2xl text-zinc-900 font-bold mb-5 mt-5">{children}</h2>,
+                        h1: ({children}) => <h1 className = "text-3xl lg:text-4xl text-zinc-900 font-bold mt-7 mb-1">{children}</h1>,
+                        h2: ({children}) => <h2 className = "text-2xl lg:text-3xl text-zinc-900 font-bold mb-2 mt-10">{children}</h2>,
+                        h3: ({children}) => <h2 className = "text-2xl text-zinc-900 font-bold mb-2 mt-11">{children}</h2>,
                         li: ({children}) => <li className = "ml-4 list-disc">{children}</li>,
-                        link: ({href , children}) => {
-                            <a href= {href} className = "text-blue-500 hover:underline" >{children}</a>
-                        } ,
+                        link: ({href , children}) => <a href= {href} className = "text-blue-500 hover:underline" >{children}</a>
+                         ,
                             em: ({children}) => <em className = "tracking-wide text-xl font-bold italic" 
                             style = {{color: "#ADE628"}}>{children}</em> ,
                             youtube: (props) => {
                                 const { url } = {...props}
                                 const id = getYoutubeId(url) 
-                                return (<div className = "p-5 mx-auto max-w-3xl mt-4 mb-4">
-                                    <hr className = 'max-w-3xl mx-auto border border-blue-300 mb-3 mt-3' ></hr>
-                                    <LiteYouTubeEmbed id = {id} className = 'mx-auto max-w-2xl'/>
-                                    <hr className = 'max-w-3xl mx-auto border border-blue-300 mb-3 mt-3' ></hr>
+                                return (<div className = "lg:p-5 p-3  mx-auto max-w-3xl mt-4 mb-4">
+                                    <hr className = 'max-w-3xl mx-auto border border-purple-300 h-1 rounded-lg bg-purple-500 mb-3 mt-3' ></hr>
+                                    <LiteYouTubeEmbed id = {id} className = 'mx-auto max-w-2xl md:h-full'/>
+                                    <hr className = 'max-w-3xl mx-auto border border-green-300 h-1 bg-green-300 rounded-lg mb-3 mt-3' ></hr>
                                     </div>)
-                            }
-                     
+                            } , 
+                            image: ImageComponent , 
+                            blockquote: ({children}) => <blockquote className='p-4 mt-4 mb-3 bg-gray-50 rounded
+                            shadow shadow-lg shadow-lime-300 mx-auto lg:max-w-4xl max-w-3xl hover:animate-pulse'>
+                               <p className='text-md italic font-bold tracking-md text-lime-500'> {children}</p>
+                                </blockquote>
+
+                            
                     }}/>}
                 </div>
             </article>    
@@ -148,7 +163,7 @@ function Post({post}) {
                     return <div key={comment.post._id} className= "flex flex-col mx-12">
                     {comment? 
                     <div className='border-b-2 first:mt-4 rounded 
-                     shadow-orange-200 shadow-lg mb-4 p-5 cursor hover:animate-pulse'>
+                     shadow-orange-300 w-full mx-auto shadow-lg mb-4 p-5 cursor hover:animate-pulse'>
                     
                     <h4 className='text-lg uppercase font-bold tracking-wide text-slate-600'>{comment.name}</h4> 
                     <p>{comment.comment}</p>
