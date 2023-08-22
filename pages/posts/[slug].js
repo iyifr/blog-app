@@ -44,7 +44,7 @@ function Post({post}) {
     <meta name="description" content= {post[0].description} />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="https://images-platform.99static.com//TNbMwuUlICajzNyWw9Prp2nuNvc=/204x202:755x753/fit-in/500x500/99designs-contests-attachments/96/96205/attachment_96205491" />
-        <meta name = "og:title" content = {post ? title : "Blog post on Yabx blog"}/>
+        <meta name = "og:title" content = {post ? title : "Blog post on Iyi's blog"}/>
         <meta name='og:image' content= {imageUrl}/>
  </Head>
 
@@ -110,7 +110,7 @@ function Post({post}) {
                         {
                 submitted ? <div className='flex flex-col p-10 my-10 bg-orange-400 max-w-2xl text-white mx-auto'>
                     <h1 className='font-bold text-2xl'>Thank you for commenting!</h1>
-                    <p className=''>Your comment will be shown when it is approved by the moderator</p>
+                    <p className=''>Your comment will be shown when it's approved by the moderator</p>
 
                 </div>       :  <form onSubmit= {handleSubmit(onSubmit)} className='flex flex-col p-5 mt-5 mb-5 max-w-2xl mx-auto'>
                 <h3 className='text-sm text-orange-500'>What are your thoughts?</h3>
@@ -155,7 +155,7 @@ function Post({post}) {
             </form>     }  
 
              
-            <h1 className='font-bold text-2xl dark:text-slate-200 max-w-2xl mx-auto opacity-50 text-center'>COMMENTS</h1>
+            <h1 className='font-bold text-2xl dark:text-slate-200 max-w-2xl mx-auto text-center'>COMMENTS</h1>
             
                <div className='flex flex-col mt-5 max-w-2xl lg:max-w-5xl mx-auto'>
                
